@@ -18,11 +18,15 @@ import SwiftUI
 
 @main
 struct ToDoListApp: App {
+    
+    @State var listViewModel: ListViewModel = ListViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 ListView()
-                .navigationTitle("ToDo List")
+                
+                .navigationTitle("ToDo List 📝")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton() // 替代原先的 leading 按钮
@@ -32,6 +36,7 @@ struct ToDoListApp: App {
                     }
                 }
             }
+            .environmentObject(listViewModel)
         }
     }
 }

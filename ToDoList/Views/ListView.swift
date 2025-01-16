@@ -9,26 +9,31 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var items: [String] = [
-        "This my first title!",
-        "This my second!",
-        "Third!"
-    ]
+    @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         List {
-            ForEach(items, id: \.self) { item in
-                ListRowView(title: item)
+            ForEach(listViewModel.items) { item in
+                 ListRowView(item: item)
+                    .onTapGesture {
+                        withAnimation(.linear) {
+                            listViewModel
+                                .updateItem(item: item)
+                        }
+                    }
             }
+            .onDelete(perform: listViewModel.ItemDelete)
+            .onMove(perform: listViewModel.MoveItem)
         }
-        .listStyle(DefaultListStyle())
     }
+    
+    
 }
 
 #Preview {
     NavigationStack {
         ListView()
-        .navigationTitle("ToDo List")
+        .navigationTitle("ToDo List 📝")
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton() // 替代原先的 leading 按钮
@@ -38,4 +43,5 @@ struct ListView: View {
             }
         }
     }
+    .environmentObject(ListViewModel())
 }

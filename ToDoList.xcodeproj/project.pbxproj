@@ -75,10 +75,10 @@
 		03779AC82D2C00CA0000E289 = {
 			isa = PBXGroup;
 			children = (
-				03779AD32D2C00CA0000E289 /* ToDoList */,
 				03779AE42D2C00CB0000E289 /* ToDoListTests */,
 				03779AEE2D2C00CB0000E289 /* ToDoListUITests */,
 				03779AD22D2C00CA0000E289 /* Products */,
+				03779AD32D2C00CA0000E289 /* ToDoList */,
 			);
 			sourceTree = "<group>";
 		};
