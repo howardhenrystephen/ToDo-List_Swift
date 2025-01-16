@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct AddView: View {
+    
+    @State var textFieldText: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                TextField("add some texts here...", text: $textFieldText)
+                    .padding(.horizontal)
+                    .frame(height: 60)
+                    .background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                
+                Button {
+                    
+                } label: {
+                    Text("save".uppercased())
+                        .foregroundStyle(Color.white)
+                        .font(.headline)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+
+            }
+            .padding(16)
+                
+        }
+        .navigationTitle("Add an Item 📝")
     }
 }
 
 #Preview {
-    AddView()
+    NavigationView {
+        AddView()
+    }
 }
